@@ -19,8 +19,7 @@ var config = {
             },
             {
                 test: /\.css$/,
-                loader: 'style!css?modules',
-                include: /flexboxgrid/
+                loader: 'style!css?modules'
             }
         ]
     }
