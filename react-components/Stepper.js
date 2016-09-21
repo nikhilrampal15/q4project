@@ -4,8 +4,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField';
-import SliderStep from './Slider'
-import SelectFieldFloatingLabel from './FloatingLabel'
+import SliderStep from './Slider';
+import SelectFieldFloatingLabel from './FloatingLabel';
+import {Link} from 'react-router';
 
 
 
@@ -98,14 +99,14 @@ class HorizontalTransition extends React.Component {
             return (
                 <div style={contentStyle}>
                     <p>
-                        <a
-                            href="/results"
+                        <Link
+                            to="/results"
                             onClick={() => {
                 this.setState({stepIndex: 0, finished: false});
               }}
                         >
                             Click here
-                        </a> to see results
+                        </Link> to see results
                     </p>
                 </div>
             );
