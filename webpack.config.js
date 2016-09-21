@@ -5,7 +5,7 @@ var BUILD_DIR = path.resolve(__dirname);
 var APP_DIR = path.resolve(__dirname);
 
 var config = {
-    entry: APP_DIR + '/app.js',
+    entry: APP_DIR + '/react-components/app.js',
     output: {
         path: BUILD_DIR,
         filename: '/static/bundle.js'

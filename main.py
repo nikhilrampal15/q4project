@@ -6,5 +6,7 @@ import requests
 base_url = 'http://www.marketwatch.com/tools/mutual-fund/list?firstLetter=A'
 response = requests.get(base_url)
 soup = bs4.BeautifulSoup(response.text, "html.parser")
+tickers = []
 for x in soup.findAll("td", class_="quotelist-symb"):
-    print(x.string)
+    tickers.append(x.string)
+print(tickers)
