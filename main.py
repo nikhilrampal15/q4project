@@ -12,7 +12,6 @@ for i in alphabet_arr:
     base_url = 'http://www.marketwatch.com/tools/mutual-fund/list?firstLetter={}'.format(i)
     response = requests.get(base_url)
     soup = bs4.BeautifulSoup(response.text, "html.parser")
-    tickers = []
     for j in soup.findAll("td", class_="quotelist-symb"):
         tickers.append(j.string)
 
