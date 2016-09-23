@@ -1,17 +1,24 @@
 """
 Scrapes Ticker symbol of every mutual fund available
 """
-from bs4 import BeautifulSoup
+import bs4
+import requests
+import string
+import csv
 
-from selenium import webdriver
+tickers = []
+alphabet_arr = list(string.ascii_uppercase)
+for i in alphabet_arr:
+    base_url = 'http://www.marketwatch.com/tools/mutual-fund/list?firstLetter={}'.format(i)
+    response = requests.get(base_url)
+    soup = bs4.BeautifulSoup(response.text, "html.parser")
+    for j in soup.findAll("td", class_="quotelist-symb"):
+        tickers.append(j.string)
 
-driver = webdriver.Firefox()
-#conservative allocation
-url = 'http://finance.yahoo.com/funds/lists/?bypass=true&mod_id=mediaquotesmutualfunds&scol=nav3m&stype=desc&rcnt=100&tab=tab1&cat=%24FOCA%24CA%24%24&page=1'
-driver.get(url)
-html = driver.page_source
-driver.quit()
-soup = BeautifulSoup(html)
 
-for tag in soup.find_all('td', class_='tkr'):
-    print (tag.string)
+csv_file = "./tickers.csv"
+
+with open(csv_file, "w") as output:
+    writer = csv.writer(output, lineterminator='\n')
+    for symbol in tickers:
+        writer.writerow([symbol])
