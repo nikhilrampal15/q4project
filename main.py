@@ -8,8 +8,9 @@ import csv
 
 tickers = []
 alphabet_arr = list(string.ascii_uppercase)
-for i in alphabet_arr:
-    base_url = 'http://www.marketwatch.com/tools/mutual-fund/list?firstLetter={}'.format(i)
+for i, idx in enumerate(alphabet_arr):
+    base_url = 'http://www.marketwatch.com/tools/mutual-fund/list/{}'.format(idx)
+    print(base_url)
     response = requests.get(base_url)
     soup = bs4.BeautifulSoup(response.text, "html.parser")
     for j in soup.findAll("td", class_="quotelist-symb"):
@@ -22,3 +23,5 @@ with open(csv_file, "w") as output:
     writer = csv.writer(output, lineterminator='\n')
     for symbol in tickers:
         writer.writerow([symbol])
+
+

@@ -4,6 +4,7 @@ Scrapes Fund Data of every mutual fund available
 import bs4
 import requests
 import csv
+import time
 
 with open('tickers.csv', 'r') as f:
     reader = csv.reader(f)
@@ -20,35 +21,33 @@ for f in ticker_arr:
     response = requests.get(base_url)
     soup = bs4.BeautifulSoup(response.text, "html.parser")
 
-    for g in soup.find("h1", class_="wsod_fLeft"):
-        info.append(''.join(g))
+    if soup.find("h1", class_="wsod_fLeft") is not None:
+        for g in soup.find("h1", class_="wsod_fLeft"):
+            info.append(''.join(g))
+    else:
+        pass
 
-    for i in soup.find("td", class_="wsod_ytd"):
-        info.append(i.string)
+    if soup.find("td", class_="wsod_ytd") is not None:
+        for i in soup.find("td", class_="wsod_ytd"):
+            info.append(i.string)
+    else:
+        pass
 
     nav = soup.find("td", class_="wsod_last")
 
-    for j in nav.find_next("td", class_="wsod_last"):
-        info.append(j.string)
+    if soup.find("td", class_="wsod_last") is not None:
+        for j in nav.find_next("td", class_="wsod_last"):
+            info.append(j.string)
+    else:
+        pass
 
     rating = soup.find("td", class_="wsod_mStarRating")
 
-    for k in rating.find_next("td", class_="wsod_mStarRating"):
-        info.append(k.string)
-
-    # with open(csv_file, "w") as output:
-    #     writer = csv.writer(output, lineterminator=',\n')
-    #     for data in info:
-    #         writer.writerow([data])
+    if rating and rating.find_next("td", class_="wsod_mStarRating") is not None:
+        for k in rating.find_next("td", class_="wsod_mStarRating"):
+            info.append(k.string)
+    else:
+        pass
 
     outfile.write(",".join(info) + '\n')
     print('scraping..  '+''.join(g)+'  from..  '+base_url)
-
-# for i in ticker_arr:
-#     base_url = 'http://money.cnn.com/quote/mutualfund/mutualfund.html?symb={}'.format(i)
-#     response = requests.get(base_url)
-#     soup = bs4.BeautifulSoup(response.text, "html.parser")
-#     tickers = []
-#     for j in soup.findAll("td", class_="quotelist-symb"):
-#         tickers.append(j.string)
-
