@@ -6,8 +6,10 @@ const Nav = () => (
         style={{backgroundColor : '#737373' , textAlign: 'center' }}
         title="Fund Advisor"
         showMenuIconButton ={false}
+        
     />
 
 );
 
 export default Nav;
+

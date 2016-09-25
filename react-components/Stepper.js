@@ -7,8 +7,8 @@ import TextField from 'material-ui/TextField';
 import SliderStep from './Slider';
 import SelectFieldFloatingLabel from './FloatingLabel';
 import {Link} from 'react-router';
-
-
+import RadioButtons from './RadioButtons'
+import GrossAnnualIncome from './GrossAnnualIncome'
 
 /**
  * A contrived example using a transition between steps
@@ -57,7 +57,7 @@ class HorizontalTransition extends React.Component {
                         <p>
                             Please enter your personal information to better assist with finding the appropriate investment vehicle
                         </p>
-                        <TextField style={{marginTop: 0}} floatingLabelText="Gross Annual Income" />
+                        <GrossAnnualIncome />
                         <br />
                         <SelectFieldFloatingLabel />
                     </div>
@@ -70,12 +70,21 @@ class HorizontalTransition extends React.Component {
                             Investment Personality
                         </p>
                         <SliderStep />
+                        
+                        <p>
+                             If the stock market and 1 of your stocks dropped 25% over 3 months, what would you do with your shares?
+                        </p>
+                        
+                        <RadioButtons />
+                        
                         <p>
                             Ad group status is different than the statuses for campaigns, ads, and keywords, though the
                             statuses can affect each other. Ad groups are contained within a campaign, and each campaign can
                             have one or more ad groups. Within each ad group are ads, keywords, and bids.
                         </p>
+                        
                         <p>Something something whatever cool</p>
+                        
                     </div>
                 );
             case 2:
