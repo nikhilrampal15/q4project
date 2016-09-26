@@ -25,10 +25,8 @@ export default class Quote extends React.Component {
         return (
             <Grid>
                 <Row>
-
                     <Col lg={3} lgOffset = {8}>
                     <TextField
-                        ref
                         id="text-field-controlled"
                         placeholder = "Quote Ex. AAPL"
                         value={this.state.value}

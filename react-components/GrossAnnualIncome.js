@@ -24,7 +24,14 @@ export default class GrossAnnualIncome extends React.Component {
         this.state = {value: 1};
     }
 
-    handleChange = (event, index, value) => this.setState({value});
+    handleChange = (event, index, value) => {
+        this.setState({value});
+        // console.log(this.state.value)
+    };
+
+    update = () =>{
+      this.props.onUpdate(this.state.value)
+    };
 
     render() {
         return (
@@ -33,7 +40,7 @@ export default class GrossAnnualIncome extends React.Component {
                     value={this.state.value}
                     onChange={this.handleChange}
                     floatingLabelText= "Gross Annual Income (USD)"
-                    required
+                    onClick ={this.update}
                 >
                     {items}
                 </SelectField>

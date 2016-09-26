@@ -19,7 +19,8 @@ class HorizontalTransition extends React.Component {
     state = {
         loading: false,
         finished: false,
-        stepIndex: 0
+        stepIndex: 0,
+        data: ''
     };
 
     dummyAsync = (cb) => {
@@ -49,6 +50,14 @@ class HorizontalTransition extends React.Component {
         }
     };
 
+    onUpdate = (val) => {
+        this.setState({
+            data:val
+        });
+        let income = this.state.data;
+        console.log(income)
+    };
+
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
@@ -57,7 +66,7 @@ class HorizontalTransition extends React.Component {
                         <p>
                             Please enter your personal information to better assist with finding the appropriate investment vehicle
                         </p>
-                        <GrossAnnualIncome />
+                        <GrossAnnualIncome onUpdate={this.onUpdate} />
                         <br />
                         <SelectFieldFloatingLabel />
                     </div>
@@ -112,6 +121,8 @@ class HorizontalTransition extends React.Component {
                             to="/results"
                             onClick={() => {
                 this.setState({stepIndex: 0, finished: false});
+
+
               }}
                         >
                             Click here
