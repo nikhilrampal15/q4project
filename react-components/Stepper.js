@@ -14,7 +14,8 @@ import GrossAnnualIncome from './GrossAnnualIncome'
  * A contrived example using a transition between steps
  */
 
-let retirement,investmentPersonality,investmentQuestion;
+let retirement,income,investmentPersonality,investmentQuestion;
+let info =[];
     
 class HorizontalTransition extends React.Component {
 
@@ -56,9 +57,8 @@ class HorizontalTransition extends React.Component {
         this.setState({
             data:val
         });
-        let income = this.state.data;
-        
-        console.log(income)
+        income = this.state.data;
+        //console.log(income)
     };
     
     onUpdateRetirement = (val) => {
@@ -66,7 +66,7 @@ class HorizontalTransition extends React.Component {
           data:val
       });
      retirement = this.state.data;
-        console.log(retirement)
+        //console.log(retirement)
     };
 
     onUpdateSlider = (val) => {
@@ -74,7 +74,7 @@ class HorizontalTransition extends React.Component {
           data:val
       });
       investmentPersonality = this.state.data;
-        console.log(investmentPersonality)
+        //console.log(investmentPersonality)
     };
     
     onUpdateRadio = (val) => {
@@ -82,7 +82,7 @@ class HorizontalTransition extends React.Component {
             data:val
         });
         investmentQuestion = this.state.data;
-        console.log(investmentQuestion)
+        //console.log(investmentQuestion)
     };
     
     getStepContent(stepIndex) {
@@ -141,19 +141,34 @@ class HorizontalTransition extends React.Component {
         const contentStyle = {margin: '0 16px', overflow: 'hidden'};
 
         if (finished) {
+            info.push(income,retirement,investmentPersonality,investmentQuestion);
+            console.log(info);
             return (
                 <div style={contentStyle}>
                     <p>
-                        <Link
-                            to="/results"
+                        <a
+                            href="/results"
                             onClick={() => {
+                           
                 this.setState({stepIndex: 0, finished: false});
-                console.log(income)
+                //console.log(income,retirement,investmentPersonality,investmentQuestion);
 
+                console.log(info);
+                $.ajax({
+                method:"POST",
+                url:'/results',
+                contentType:'application/json',
+                data:JSON.stringify(info),
+               
+
+                success:function(response){
+                    console.log('hello' + response)
+                }
+                });
               }}
                         >
                             Click here
-                        </Link> to see results
+                        </a> to see results
                     </p>
                 </div>
             );
