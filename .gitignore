@@ -1,2 +1,6 @@
-./node_modules
-
+.idea/workspace.xml
+ENV/
+geckodriver.log
+node_modules/
+static/
+target/
