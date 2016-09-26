@@ -8,7 +8,7 @@ var config = {
     entry: APP_DIR + '/react-components/app.js',
     output: {
         path: BUILD_DIR,
-        filename: 'src/main/resources/public/static/bundle.js'
+        filename: 'server/static/bundle.js'
     },
     module : {
         loaders : [

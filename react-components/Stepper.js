@@ -14,6 +14,8 @@ import GrossAnnualIncome from './GrossAnnualIncome'
  * A contrived example using a transition between steps
  */
 
+let retirement,investmentPersonality,investmentQuestion;
+    
 class HorizontalTransition extends React.Component {
 
     state = {
@@ -55,6 +57,7 @@ class HorizontalTransition extends React.Component {
             data:val
         });
         let income = this.state.data;
+        
         console.log(income)
     };
     
@@ -62,7 +65,7 @@ class HorizontalTransition extends React.Component {
       this.setState({
           data:val
       });
-      let retirement = this.state.data;
+     retirement = this.state.data;
         console.log(retirement)
     };
 
@@ -70,7 +73,7 @@ class HorizontalTransition extends React.Component {
       this.setState({
           data:val
       });
-      let investmentPersonality = this.state.data;
+      investmentPersonality = this.state.data;
         console.log(investmentPersonality)
     };
     
@@ -78,7 +81,7 @@ class HorizontalTransition extends React.Component {
         this.setState({
             data:val
         });
-        let investmentQuestion = this.state.data;
+        investmentQuestion = this.state.data;
         console.log(investmentQuestion)
     };
     
@@ -145,7 +148,7 @@ class HorizontalTransition extends React.Component {
                             to="/results"
                             onClick={() => {
                 this.setState({stepIndex: 0, finished: false});
-
+                console.log(income)
 
               }}
                         >
