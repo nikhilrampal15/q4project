@@ -16,6 +16,10 @@ export default class SliderStep extends React.Component {
         this.setState({firstSlider: value});
     }
 
+    update = () => {
+        this.props.onUpdateSlider(this.state.firstSlider)
+    };
+
     render() {
         return (
             <div>
@@ -26,6 +30,7 @@ export default class SliderStep extends React.Component {
                     defaultValue={50}
                     value={this.state.firstSlider}
                     onChange={this.handleFirstSlider.bind(this)}
+                    onClick = {this.update}
                 />
                 <p>
                     <span>{'Your investing style can be best described as: '}</span>

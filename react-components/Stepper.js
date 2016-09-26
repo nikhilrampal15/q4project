@@ -57,7 +57,31 @@ class HorizontalTransition extends React.Component {
         let income = this.state.data;
         console.log(income)
     };
+    
+    onUpdateRetirement = (val) => {
+      this.setState({
+          data:val
+      });
+      let retirement = this.state.data;
+        console.log(retirement)
+    };
 
+    onUpdateSlider = (val) => {
+      this.setState({
+          data:val
+      });
+      let investmentPersonality = this.state.data;
+        console.log(investmentPersonality)
+    };
+    
+    onUpdateRadio = (val) => {
+        this.setState({
+            data:val
+        });
+        let investmentQuestion = this.state.data;
+        console.log(investmentQuestion)
+    };
+    
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
@@ -68,7 +92,7 @@ class HorizontalTransition extends React.Component {
                         </p>
                         <GrossAnnualIncome onUpdate={this.onUpdate} />
                         <br />
-                        <SelectFieldFloatingLabel />
+                        <SelectFieldFloatingLabel onUpdateRetirement={this.onUpdateRetirement}/>
                     </div>
                 );
             case 1:
@@ -78,13 +102,13 @@ class HorizontalTransition extends React.Component {
                         <p>
                             Investment Personality
                         </p>
-                        <SliderStep />
+                        <SliderStep onUpdateSlider ={this.onUpdateSlider}/>
                         
                         <p>
                              If the stock market and 1 of your stocks dropped 25% over 3 months, what would you do with your shares?
                         </p>
                         
-                        <RadioButtons />
+                        <RadioButtons onUpdateRadio ={this.onUpdateRadio}/>
                         
                         <p>
                             Ad group status is different than the statuses for campaigns, ads, and keywords, though the

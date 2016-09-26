@@ -24,10 +24,8 @@ export default class GrossAnnualIncome extends React.Component {
         this.state = {value: 1};
     }
 
-    handleChange = (event, index, value) => {
-        this.setState({value});
-        // console.log(this.state.value)
-    };
+    handleChange = (event, index, value) => this.setState({value});
+    
 
     update = () =>{
       this.props.onUpdate(this.state.value)

@@ -22,6 +22,10 @@ export default class SelectFieldFloatingLabel extends React.Component {
 
     handleChange = (event, index, value) => this.setState({value});
 
+    update = () =>{
+        this.props.onUpdateRetirement(this.state.value)
+    };
+
     render() {
         return (
             <div>
@@ -29,6 +33,7 @@ export default class SelectFieldFloatingLabel extends React.Component {
                     value={this.state.value}
                     onChange={this.handleChange}
                     floatingLabelText="Years Until Retirement"
+                    onClick={this.update}
                 >
                     {items}
                 </SelectField>

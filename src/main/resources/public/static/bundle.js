@@ -39400,6 +39400,24 @@
 	            });
 	            var income = _this.state.data;
 	            console.log(income);
+	        }, _this.onUpdateRetirement = function (val) {
+	            _this.setState({
+	                data: val
+	            });
+	            var retirement = _this.state.data;
+	            console.log(retirement);
+	        }, _this.onUpdateSlider = function (val) {
+	            _this.setState({
+	                data: val
+	            });
+	            var investmentPersonality = _this.state.data;
+	            console.log(investmentPersonality);
+	        }, _this.onUpdateRadio = function (val) {
+	            _this.setState({
+	                data: val
+	            });
+	            var investmentQuestion = _this.state.data;
+	            console.log(investmentQuestion);
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 
@@ -39418,7 +39436,7 @@
 	                        ),
 	                        _react2.default.createElement(_GrossAnnualIncome2.default, { onUpdate: this.onUpdate }),
 	                        _react2.default.createElement('br', null),
-	                        _react2.default.createElement(_FloatingLabel2.default, null)
+	                        _react2.default.createElement(_FloatingLabel2.default, { onUpdateRetirement: this.onUpdateRetirement })
 	                    );
 	                case 1:
 	                    return _react2.default.createElement(
@@ -39430,13 +39448,13 @@
 	                            null,
 	                            'Investment Personality'
 	                        ),
-	                        _react2.default.createElement(_Slider2.default, null),
+	                        _react2.default.createElement(_Slider2.default, { onUpdateSlider: this.onUpdateSlider }),
 	                        _react2.default.createElement(
 	                            'p',
 	                            null,
 	                            'If the stock market and 1 of your stocks dropped 25% over 3 months, what would you do with your shares?'
 	                        ),
-	                        _react2.default.createElement(_RadioButtons2.default, null),
+	                        _react2.default.createElement(_RadioButtons2.default, { onUpdateRadio: this.onUpdateRadio }),
 	                        _react2.default.createElement(
 	                            'p',
 	                            null,
@@ -43470,6 +43488,8 @@
 
 	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SliderStep.__proto__ || Object.getPrototypeOf(SliderStep)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 	            firstSlider: 50
+	        }, _this.update = function () {
+	            _this.props.onUpdateSlider(_this.state.firstSlider);
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 
@@ -43492,7 +43512,8 @@
 	                    step: 25,
 	                    defaultValue: 50,
 	                    value: this.state.firstSlider,
-	                    onChange: this.handleFirstSlider.bind(this)
+	                    onChange: this.handleFirstSlider.bind(this),
+	                    onClick: this.update
 	                }),
 	                _react2.default.createElement(
 	                    'p',
@@ -44447,6 +44468,10 @@
 	            return _this.setState({ value: value });
 	        };
 
+	        _this.update = function () {
+	            _this.props.onUpdateRetirement(_this.state.value);
+	        };
+
 	        _this.state = { value: 1 };
 	        return _this;
 	    }
@@ -44462,7 +44487,8 @@
 	                    {
 	                        value: this.state.value,
 	                        onChange: this.handleChange,
-	                        floatingLabelText: 'Years Until Retirement'
+	                        floatingLabelText: 'Years Until Retirement',
+	                        onClick: this.update
 	                    },
 	                    items
 	                ),
@@ -49452,6 +49478,8 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -49459,6 +49487,12 @@
 	var _RadioButton = __webpack_require__(504);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var styles = {
 	    block: {
@@ -49469,36 +49503,78 @@
 	    }
 	};
 
-	var RadioButtons = function RadioButtons() {
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            _RadioButton.RadioButtonGroup,
-	            { name: 'shipSpeed', defaultSelected: 'not_light' },
-	            _react2.default.createElement(_RadioButton.RadioButton, {
-	                value: 'not_light',
-	                label: 'Potential for loss',
-	                style: styles.radioButton
-	            }),
-	            _react2.default.createElement(_RadioButton.RadioButton, {
-	                value: 'light1',
-	                label: 'Mostly potential for loss, but some concern about potential for gain ',
-	                style: styles.radioButton
-	            }),
-	            _react2.default.createElement(_RadioButton.RadioButton, {
-	                value: 'light2',
-	                label: 'Mostly potential for gain, but some concern about potential for loss',
-	                style: styles.radioButton
-	            }),
-	            _react2.default.createElement(_RadioButton.RadioButton, {
-	                value: 'light3',
-	                label: 'Potential for gain',
-	                style: styles.radioButton
-	            })
-	        )
-	    );
-	};
+	var RadioButtons = function (_React$Component) {
+	    _inherits(RadioButtons, _React$Component);
+
+	    function RadioButtons(props) {
+	        _classCallCheck(this, RadioButtons);
+
+	        var _this = _possibleConstructorReturn(this, (RadioButtons.__proto__ || Object.getPrototypeOf(RadioButtons)).call(this, props));
+
+	        _this.firstRadio = function () {
+	            _this.state.active = 1;
+	            _this.props.onUpdateRadio(_this.state.active);
+	        };
+
+	        _this.secondRadio = function () {
+	            _this.state.active = 2;
+	            _this.props.onUpdateRadio(_this.state.active);
+	        };
+
+	        _this.thirdRadio = function () {
+	            _this.state.active = 3;
+	            _this.props.onUpdateRadio(_this.state.active);
+	        };
+
+	        _this.fourthRadio = function () {
+	            _this.state.active = 4;
+	            _this.props.onUpdateRadio(_this.state.active);
+	        };
+
+	        _this.state = { active: null };
+	        return _this;
+	    }
+
+	    _createClass(RadioButtons, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _RadioButton.RadioButtonGroup,
+	                    { name: 'shipSpeed', defaultSelected: 'not_light' },
+	                    _react2.default.createElement(_RadioButton.RadioButton, {
+	                        value: 'not_light',
+	                        label: 'Potential for loss',
+	                        style: styles.radioButton,
+	                        onClick: this.firstRadio
+	                    }),
+	                    _react2.default.createElement(_RadioButton.RadioButton, {
+	                        value: 'light1',
+	                        label: 'Mostly potential for loss, but some concern about potential for gain ',
+	                        style: styles.radioButton,
+	                        onClick: this.secondRadio
+	                    }),
+	                    _react2.default.createElement(_RadioButton.RadioButton, {
+	                        value: 'light2',
+	                        label: 'Mostly potential for gain, but some concern about potential for loss',
+	                        style: styles.radioButton,
+	                        onClick: this.thirdRadio
+	                    }),
+	                    _react2.default.createElement(_RadioButton.RadioButton, {
+	                        value: 'light3',
+	                        label: 'Potential for gain',
+	                        style: styles.radioButton,
+	                        onClick: this.fourthRadio
+	                    })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return RadioButtons;
+	}(_react2.default.Component);
 
 	exports.default = RadioButtons;
 
@@ -50632,8 +50708,7 @@
 	        var _this = _possibleConstructorReturn(this, (GrossAnnualIncome.__proto__ || Object.getPrototypeOf(GrossAnnualIncome)).call(this, props));
 
 	        _this.handleChange = function (event, index, value) {
-	            _this.setState({ value: value });
-	            // console.log(this.state.value)
+	            return _this.setState({ value: value });
 	        };
 
 	        _this.update = function () {
