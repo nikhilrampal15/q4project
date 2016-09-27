@@ -5,7 +5,6 @@
     <title>Fund Advisor</title>
 </head>
 <body>
-<h1>I am working</h1>
 </body>
 <!-- TradingView Widget BEGIN -->
 <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -13,7 +12,7 @@
     new TradingView.widget({
         "width": 980,
         "height": 610,
-        "symbol": "NASDAQ:AAPL",
+        "symbol":window.location.search.split('=')[1],
         "interval": "D",
         "timezone": "Etc/UTC",
         "theme": "White",
@@ -28,6 +27,7 @@
         "popup_height": "650"
     });
 </script>
+
 <!-- TradingView Widget END -->
 
 </html>

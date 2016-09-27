@@ -20,6 +20,10 @@ def results():
 #print(answer)
 
 
+@app.route('/quote', methods=['GET'])
+def quote():
+    return render_template('quote.html')
+
 
 
 
