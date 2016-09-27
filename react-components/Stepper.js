@@ -146,25 +146,25 @@ class HorizontalTransition extends React.Component {
                 <div style={contentStyle}>
                     <p>
                         <a
-                            href="/results"
                             onClick={() => {
                            
-                this.setState({stepIndex: 0, finished: false});
-                //console.log(income,retirement,investmentPersonality,investmentQuestion);
-
-                console.log(info);
-                $.ajax({
-                method:"POST",
-                url:'/results',
-                contentType:'application/json',
-                data:JSON.stringify(info),
-               
-
-                success:function(response){
-                    console.log('hello' + response)
-                }
-                });
-              }}
+                                this.setState({stepIndex: 0, finished: false});
+                                    //console.log(income,retirement,investmentPersonality,investmentQuestion);
+                    
+                                    console.log(info);
+                                    $.ajax({
+                                        method:"POST",
+                                        url:'/results',
+                                        contentType:'application/json',
+                                        data:JSON.stringify(info),
+                                       
+                        
+                                        success:function(response){
+                                            console.log('hello' + response)
+                                            window.location = '/mychart?clusters='+response
+                                        }
+                                    });
+                                 }}
                         >
                             Click here
                         </a> to see results
