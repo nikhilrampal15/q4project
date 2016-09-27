@@ -9,12 +9,12 @@ def home_page():
     return render_template('index.html')
 
 
-@app.route('/results', methods=['POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def results():
     if request.headers['Content-Type'] == 'application/json':
         print(request.get_json())
         answer.append(request.get_json())
-        return 'success'
+        return render_template('results.html')
 
 #print('hello')
 #print(answer)

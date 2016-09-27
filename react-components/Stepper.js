@@ -6,7 +6,6 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField';
 import SliderStep from './Slider';
 import SelectFieldFloatingLabel from './FloatingLabel';
-import {Link} from 'react-router';
 import RadioButtons from './RadioButtons'
 import GrossAnnualIncome from './GrossAnnualIncome'
 
