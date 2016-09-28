@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.cluster import KMeans
 
 
-def k_means():
+def k_means(arr):
     mutual_funds = pd.read_csv('fund_data.csv')
     no_percents = mutual_funds['C'].str.replace('+', '').str.replace('%', '').str.replace('--', '0')
     tickers = mutual_funds['B'].str.replace('(', '').str.replace(')', '')
@@ -22,7 +22,9 @@ def k_means():
     cluster_5 = sheet[sheet[4] == 1]
 
     with pd.option_context('display.max_rows', 21, 'display.max_columns', 10):
-        print(cluster_5[:4]['B'])
+        cluster_tick_arr = list(cluster_5[:4]['B'])
+        print(cluster_tick_arr)
+    return cluster_tick_arr
 
     #percents = mutual_funds['C']
     #percent_2 = no_percents.astype(float)
@@ -49,7 +51,6 @@ def k_means():
 
 
 
-k_means()
 
 
 

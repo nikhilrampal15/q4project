@@ -5,7 +5,6 @@ import json
 app = Flask(__name__)
 
 
-
 @app.route('/', methods=['GET'])
 def home_page():
     return render_template('index.html')
@@ -18,10 +17,10 @@ def results():
     print(resultarr)
     return json.dumps(resultarr)
 
-@app.route('/mycharts',methods=['GET'])
+@app.route('/mychart',methods=['GET'])
 def charts():
     print(request.query_string)
-    return render_template('results.html', kmeans_array=request.query_string)
+    return render_template('results.html')
 
 
 #print('hello')

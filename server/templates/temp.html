@@ -1,22 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fund Advisor</title>
+    <title>Document</title>
 </head>
 <body>
-<h1>I am working</h1>
-</body>
-<!-- TradingView Widget BEGIN -->
 <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
 <script type="text/javascript">
-    var kMeansArray = JSON.parse(decodeURI(window.location.search.split('=')[1]));
-
-    for(var i=0;i<kMeansArray.length;i++){
         new TradingView.widget({
             "width": 980,
             "height": 610,
-            "symbol": 'QUANDL:/YAHOO/FUND_'+kMeansArray[i],
+            "symbol": 'QUANDLE/YAHOO/FUND_FUSEX',
             "interval": "D",
             "timezone": "Etc/UTC",
             "theme": "Black",
@@ -34,10 +28,7 @@
             "popup_width": "1000",
             "popup_height": "650"
         });
-    }
-
 
 </script>
-<!-- TradingView Widget END -->
-
+</body>
 </html>
