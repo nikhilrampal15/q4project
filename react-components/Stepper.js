@@ -113,21 +113,16 @@ class HorizontalTransition extends React.Component {
                         <RadioButtons onUpdateRadio ={this.onUpdateRadio}/>
                         
                         <p>
-                            Ad group status is different than the statuses for campaigns, ads, and keywords, though the
-                            statuses can affect each other. Ad groups are contained within a campaign, and each campaign can
-                            have one or more ad groups. Within each ad group are ads, keywords, and bids.
+                            The above references an opinion and is for information purposes only.  It is not intended to be investment advice.  Seek a duly licensed professional for investment advice. This information is for educational purposes only.
                         </p>
-                        
-                        <p>Something something whatever cool</p>
+
                         
                     </div>
                 );
             case 2:
                 return (
                     <p>
-                        Try out different ad text to see what brings in the most customers, and learn how to
-                        enhance your ads using features like ad extensions. If you run into any problems with your
-                        ads, find out how to tell if they're running and how to resolve approval issues.
+                        Click finish to start a new fund advising session.
                     </p>
                 );
             default:

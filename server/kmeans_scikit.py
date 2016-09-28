@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.cluster import KMeans
 
+array = [1, 2, 3, 4]
+
 
 def k_means(arr):
     mutual_funds = pd.read_csv('fund_data.csv')
@@ -22,10 +24,26 @@ def k_means(arr):
     cluster_5 = sheet[sheet[4] == 1]
 
     with pd.option_context('display.max_rows', 21, 'display.max_columns', 10):
-        cluster_tick_arr = list(cluster_5[:4]['B'])
-        print(cluster_tick_arr)
-    return cluster_tick_arr
-
+        if arr[2] == 1:
+            cluster_tick_arr = list(cluster_1[:4]['B'])
+            return cluster_tick_arr
+        elif arr[2] == 25:
+            cluster_tick_arr = list(cluster_5[:4]['B'])
+            print(cluster_tick_arr)
+            print(cluster_tick_arr)
+        elif arr[2] == 50:
+            cluster_tick_arr = list(cluster_4[:4]['B'])
+            print(cluster_tick_arr)
+            return cluster_tick_arr
+        elif arr[2] == 75:
+            cluster_tick_arr = list(cluster_3[:4]['B'])
+            print(cluster_tick_arr)
+            return cluster_tick_arr
+        elif arr[2] == 100:
+            cluster_tick_arr = list(cluster_2[:4]['B'])
+            print(cluster_tick_arr)
+            return cluster_tick_arr
+k_means(array)
     #percents = mutual_funds['C']
     #percent_2 = no_percents.astype(float)
     #first_one = percents[:1]
